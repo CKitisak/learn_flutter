@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'pages/first-page.dart';
-import 'pages/second-page.dart';
 
 void main() {
   runApp(MyApp());
@@ -29,16 +27,36 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       // When using initialRoute, don’t define a home property.
-      // home: FirstPage(),
-      // Start the app with the "/" named route. In this case, the app starts
-      // on the FirstScreen widget.
-      initialRoute: '/',
-      routes: <String, WidgetBuilder>{
-        // When navigating to the "/" route, build the FirstPage widget.
-        '/': (BuildContext context) => FirstPage(),
-        // When navigating to the "/second" route, build the SecondPage widget.
-        '/second': (BuildContext context) => SecondPage(),
-      },
+      home: HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('First Page'),
+      ),
+      body: OrientationBuilder(
+        builder: (context, orientation) {
+          return GridView.count(
+            // Create a grid with 2 columns in portrait mode,
+            // or 4 columns in landscape mode.
+            crossAxisCount: orientation == Orientation.portrait ? 2 : 4,
+            // Generate 100 widgets that display their index in the List.
+            children: List.generate(100, (index) {
+              return Center(
+                child: Text(
+                  'Item $index',
+                  style: Theme.of(context).textTheme.headline5,
+                ),
+              );
+            }),
+          );
+        },
+      ),
     );
   }
 }
