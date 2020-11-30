@@ -33,11 +33,11 @@ class MyApp extends StatelessWidget {
       // Start the app with the "/" named route. In this case, the app starts
       // on the FirstScreen widget.
       initialRoute: '/',
-      routes: {
+      routes: <String, WidgetBuilder>{
         // When navigating to the "/" route, build the FirstPage widget.
-        '/': (context) => FirstPage(),
+        '/': (BuildContext context) => FirstPage(),
         // When navigating to the "/second" route, build the SecondPage widget.
-        '/second': (context) => SecondPage(),
+        '/second': (BuildContext context) => SecondPage(),
       },
     );
   }
