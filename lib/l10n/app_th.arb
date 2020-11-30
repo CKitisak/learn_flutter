@@ -1,0 +1,6 @@
+{
+  "@@locale": "th",
+
+  "helloWorld": "สวัสดีชาวโลก!",
+  "hello": "สวัสดี {userName}"
+}
